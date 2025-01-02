@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Webhook Tool</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+  <div class="w-full max-w-lg bg-white shadow-lg rounded-lg p-6">
+    <h1 class="text-2xl font-bold text-gray-800 text-center">Webhook Tool</h1>
+
+    <form id="webhookForm" class="mt-4 space-y-4">
+      <!-- Webhook URL -->
+      <div>
+        <label for="webhookUrl" class="block text-gray-700 font-medium">Discord Webhook URL</label>
+        <input 
+          type="url" 
+          id="webhookUrl" 
+          name="webhookUrl" 
+          required 
+          class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          placeholder="Enter your webhook URL">
+      </div>
+
+      <!-- Message -->
+      <div>
+        <label for="message" class="block text-gray-700 font-medium">Message</label>
+        <textarea 
+          id="message" 
+          name="message" 
+          rows="4" 
+          required 
+          class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          placeholder="Enter your message"></textarea>
+      </div>
+
+      <!-- Spam Mode -->
+      <div class="flex items-center">
+        <input 
+          type="checkbox" 
+          id="spamMode" 
+          name="spamMode" 
+          class="h-5 w-5 text-blue-500 focus:ring-blue-500 focus:ring-2">
+        <label for="spamMode" class="ml-2 text-gray-700">Enable Spam Mode</label>
+      </div>
+
+      <!-- Spam Options -->
+      <div id="spamOptions" class="hidden space-y-4">
+        <!-- Number of Times -->
+        <div>
+          <label for="repeatCount" class="block text-gray-700 font-medium">Number of Times</label>
+          <input 
+            type="number" 
+            id="repeatCount" 
+            name="repeatCount" 
+            min="1" 
+            max="100" 
+            class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            placeholder="Enter the number of times to send the message">
+        </div>
+        <!-- Delay Between Messages -->
+        <div>
+          <label for="delay" class="block text-gray-700 font-medium">Delay Between Messages (ms)</label>
+          <input 
+            type="number" 
+            id="delay" 
+            name="delay" 
+            min="0" 
+            class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            placeholder="Enter delay in milliseconds (e.g., 1000 for 1 second)">
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <div>
+        <button 
+          type="submit" 
+          class="w-full bg-blue-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+          Send Message
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    const spamModeCheckbox = document.getElementById('spamMode');
+    const spamOptions = document.getElementById('spamOptions');
+
+    spamModeCheckbox.addEventListener('change', () => {
+      spamOptions.classList.toggle('hidden', !spamModeCheckbox.checked);
+    });
+
+    document.getElementById('webhookForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const webhookUrl = document.getElementById('webhookUrl').value;
+      const message = document.getElementById('message').value;
+      const spamMode = document.getElementById('spamMode').checked;
+      const repeatCount = parseInt(document.getElementById('repeatCount').value) || 1;
+      const delay = parseInt(document.getElementById('delay').value) || 0;
+
+      if (!webhookUrl || !message) {
+        alert('Please fill out all required fields.');
+        return;
+      }
+
+      for (let i = 0; i < (spamMode ? repeatCount : 1); i++) {
+        try {
+          await fetch(webhookUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ content: message })
+          });
+          if (spamMode && delay > 0) {
+            await new Promise(resolve => setTimeout(resolve, delay));
+          }
+        } catch (err) {
+          console.error('Error sending webhook:', err);
+          alert('Failed to send message. Check the webhook URL and try again.');
+          break;
+        }
+      }
+
+      alert('Message(s) sent successfully!');
+    });
+  </script>
+</body>
+</html>
