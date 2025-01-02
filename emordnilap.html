@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webordnilap - Emordnilap Palindrome</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .result {
+            font-size: 36px;
+            font-weight: bold;
+            transition: transform 1s ease-in-out;
+        }
+        .spin {
+            transform: rotate(360deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Webordnilap: The Emordnilap Palindrome Machine</h1>
+        <input type="text" id="wordInput" placeholder="Enter a word">
+        <button onclick="generateEmordnilap()">Generate Emordnilap</button>
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        function generateEmordnilap() {
+            const word = document.getElementById("wordInput").value;
+            const reversedWord = word.split("").reverse().join("");
+
+            const resultDiv = document.getElementById("result");
+            resultDiv.textContent = reversedWord;
+
+            // Apply the spin effect
+            resultDiv.classList.add("spin");
+
+            // Remove the spin class after the animation ends
+            setTimeout(() => {
+                resultDiv.classList.remove("spin");
+            }, 1000);  // Duration of the animation
+        }
+    </script>
+</body>
+</html>

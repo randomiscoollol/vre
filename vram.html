@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DownloadMoreVRAM</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #ff6347;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            color: #555;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin: 20px auto;
+            width: 80%;
+            max-width: 500px;
+        }
+
+        .select-container {
+            margin-bottom: 20px;
+        }
+
+        select {
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 100%;
+            max-width: 300px;
+        }
+
+.download-button {
+    background-image: url('https://static.vecteezy.com/system/resources/thumbnails/000/562/163/small/BUTTON-d-2.jpg');
+    background-size: cover;
+    background-position: center;
+    color: transparent;
+    padding: 15px 40px;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    display: inline-block;
+    text-decoration: none;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    height: 60px;
+}
+
+
+        .download-button:hover {
+            opacity: 0.9;
+        }
+
+        .progress-container {
+            margin-top: 20px;
+            display: none;
+        }
+
+        .progress-bar {
+            width: 100%;
+            background-color: #ddd;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+
+        .progress-bar-inner {
+            height: 20px;
+            width: 0;
+            background-color: #4CAF50;
+            border-radius: 5px;
+        }
+
+        #messageContainer {
+            margin-top: 20px;
+            display: none;
+        }
+
+        .copyright {
+            margin-top: 50px;
+            font-size: 12px;
+            color: #888;
+        }
+
+        .copyright a {
+            color: #888;
+            text-decoration: none;
+        }
+
+        .copyright a:hover {
+            color: #ff6347;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 28px;
+            }
+
+            .download-button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Welcome to DownloadMoreVRAM!</h1>
+    <p>Select your VRAM type and size to "download."</p>
+
+    <div class="card">
+        <div class="select-container">
+            <label for="vramType">Choose your VRAM type:</label>
+            <select id="vramType">
+                <option value="GDDR1">GDDR1</option>
+                <option value="GDDR2">GDDR2</option>
+                <option value="GDDR3">GDDR3</option>
+                <option value="GDDR4">GDDR4</option>
+                <option value="GDDR5">GDDR5</option>
+                <option value="GDDR5X">GDDR5X</option>
+                <option value="GDDR6">GDDR6</option>
+                <option value="GDDR6X">GDDR6X</option>
+            </select>
+        </div>
+
+        <div class="select-container">
+            <label for="vramAmount">Choose the amount of VRAM:</label>
+            <select id="vramAmount">
+                <option value="2GB">2GB</option>
+                <option value="4GB">4GB</option>
+                <option value="8GB">8GB</option>
+                <option value="16GB">16GB</option>
+                <option value="32GB">32GB</option>
+                <option value="54GB">54GB</option>
+            </select>
+        </div>
+
+        <!-- Download Button -->
+        <a id="downloadLink" class="download-button" href="#">
+            Download VRAM
+        </a>
+    </div>
+
+    <!-- Progress bar -->
+    <div class="progress-container" id="progressContainer">
+        <p>Downloading...</p>
+        <div class="progress-bar">
+            <div class="progress-bar-inner" id="progressBar"></div>
+        </div>
+    </div>
+
+    <div id="messageContainer">
+        <p>Click here for fast downloading: <a href="https://www.youtube.com/watch?v=xvFZjo5PgG0" target="_blank">here</a></p>
+    </div>
+
+    <div class="copyright">
+        <p>Copyright 2025. There is no scam or virus, this is joke website, keep smiling.<br>Powered by DownloadMoreVRAM.</p>
+    </div>
+
+    <script>
+        const downloadLink = document.getElementById('downloadLink');
+        const progressContainer = document.getElementById('progressContainer');
+        const progressBar = document.getElementById('progressBar');
+        const messageContainer = document.getElementById('messageContainer');
+
+        // Simulate downloading process
+        downloadLink.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            // Show the progress bar and start the download simulation
+            progressContainer.style.display = 'block';
+            let width = 0;
+            const downloadFile = 'https://github.com/randomiscoollol/vre/releases/download/tag/vram.vbs'; // Use your correct GitHub raw URL here
+
+            // Simulate progress
+            const interval = setInterval(function() {
+                if (width >= 100) {
+                    clearInterval(interval);
+                    // After download "completes", show the message
+                    setTimeout(function() {
+                        window.location.href = downloadFile; // Force download
+                        messageContainer.style.display = 'block';
+                    }, 500); // Delay to show the progress bar completion
+                } else {
+                    width++;
+                    progressBar.style.width = width + '%';
+                }
+            }, 50); // Update every 50ms to simulate downloading
+        });
+    </script>
+
+</body>
+</html>
