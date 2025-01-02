@@ -15,101 +15,82 @@
 </head>
 <body class="bg-gray-900 text-white">
 
-    <!-- Header with site name and user interaction -->
-    <div class="container mx-auto my-8 p-8 text-center">
-        <h1 class="text-3xl font-bold mb-4">Welcome to Stickman's Idiot Cave!</h1>
-        <h2 class="mb-8">Enter your name to get started:</h2>
+    <!-- Header with site name and introduction -->
+    <header class="text-center py-10">
+        <h1 class="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-600 to-indigo-800 mb-6">
+            Welcome to Stickman's Idiot Cave!
+        </h1>
+        <p class="text-xl mb-4">A place for all kinds of funny, useless, and cool projects!</p>
+        <p class="text-lg">Explore, have fun, and maybe get confused. 😎</p>
+    </header>
 
-        <!-- Name Input Form -->
+    <!-- User Name Input Form (For fun) -->
+    <section class="container mx-auto text-center py-10">
+        <h2 class="text-2xl font-semibold mb-4">Enter Your Name</h2>
         <form id="nameForm" class="flex justify-center">
-            <input type="text" id="nameInput" class="border p-2 rounded-l-lg" placeholder="Your Name" required>
-            <button type="submit" class="bg-blue-500 text-white p-2 rounded-r-lg">Submit</button>
+            <input type="text" id="nameInput" class="border-2 border-blue-500 text-gray-900 p-2 rounded-l-lg focus:outline-none" placeholder="Enter your name" required>
+            <button type="submit" class="bg-blue-600 text-white p-2 rounded-r-lg hover:bg-blue-700">Submit</button>
         </form>
+        <p id="greetingMessage" class="mt-4 text-lg"></p>
+    </section>
 
-        <p id="greetingMessage" class="mt-4"></p>
-    </div>
+    <!-- Featured Projects -->
+    <section class="container mx-auto py-10">
+        <h2 class="text-3xl font-semibold text-center mb-8">Featured Projects</h2>
 
-    <!-- Leaderboard Section -->
-    <div class="container mx-auto my-8 p-8 text-center">
-        <h2 class="text-2xl font-bold mb-4">Leaderboard</h2>
-        <ul id="leaderboard" class="space-y-2">
-            <!-- Dynamic leaderboard list will be filled here -->
-        </ul>
-    </div>
+        <!-- Webordnilap Project -->
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg mb-6 hover:bg-gray-700">
+            <h3 class="text-2xl font-semibold mb-2">Webordnilap</h3>
+            <p class="text-gray-300 mb-4">Create fun word reversals (emordnilap) for random words!</p>
+            <a href="emordnilap.html" class="text-blue-500 hover:underline">Try Webordnilap</a>
+        </div>
 
-    <!-- Webordnilap Project Section -->
-    <div class="container mx-auto my-8 p-8 text-center">
-        <h2 class="text-2xl font-bold mb-4">Webordnilap Project</h2>
-        <a href="webordnilap.html" class="text-blue-500">Try Webordnilap</a>
-    </div>
+        <!-- Text Scrambler -->
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg mb-6 hover:bg-gray-700">
+            <h3 class="text-2xl font-semibold mb-2">Text Scrambler</h3>
+            <p class="text-gray-300 mb-4">Scramble your text for fun or challenge your friends!</p>
+            <a href="scramble.html" class="text-blue-500 hover:underline">Try the Text Scrambler</a>
+        </div>
 
-    <!-- Text Scrambler Project Section -->
-    <div class="container mx-auto my-8 p-8 text-center">
-        <h2 class="text-2xl font-bold mb-4">Text Scrambler</h2>
-        <a href="scramble.html" class="text-blue-500">Try the Text Scrambler</a>
-    </div>
+        <!-- FreeVRAM Joke -->
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg mb-6 hover:bg-gray-700">
+            <h3 class="text-2xl font-semibold mb-2">FreeVRAM</h3>
+            <p class="text-gray-300 mb-4">The ultimate joke: Claim your free VRAM!</p>
+            <a href="vram.html" class="text-blue-500 hover:underline">Claim Free VRAM!</a>
+        </div>
 
-    <!-- FreeVRAM Joke Section -->
-    <div class="container mx-auto my-8 p-8 text-center">
-        <h2 class="text-2xl font-bold mb-4">FreeVRAM (Joke)</h2>
-        <a href="vram.html" class="text-blue-500">Claim Free VRAM!</a>
-    </div>
+        <!-- UnbI0ck3d Gmes -->
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg mb-6 hover:bg-gray-700">
+            <h3 class="text-2xl font-semibold mb-2">UnbI0ck3d Gmes</h3>
+            <p class="text-gray-300 mb-4">Play blocked games without restrictions!</p>
+            <a href="asian/homepage.html" class="text-blue-500 hover:underline">Play UnbI0ck3d Gmes</a>
+        </div>
+    </section>
 
-    <!-- UnbI0ck3d Gmes Section -->
-    <div class="container mx-auto my-8 p-8 text-center">
-        <h2 class="text-2xl font-bold mb-4">UnbI0ck3d Gmes</h2>
-        <a href="asian/homepage.html" class="text-blue-500">Play UnbI0ck3d Gmes</a>
-    </div>
+    <!-- WebSpam (Discord Webhook Sender) -->
+    <section class="container mx-auto py-10">
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg mb-6 hover:bg-gray-700">
+            <h3 class="text-2xl font-semibold mb-2">WebSpam - Discord Webhook Sender</h3>
+            <p class="text-gray-300 mb-4">Send fun webhooks to a Discord channel!</p>
+            <a href="webspam.html" class="text-blue-500 hover:underline">Send a Webhook to Discord</a>
+        </div>
+    </section>
 
-    <!-- WebSpam Section (Webhook sender) -->
-    <div class="container mx-auto my-8 p-8 text-center">
-        <h2 class="text-2xl font-bold mb-4">WebSpam (Discord Webhook)</h2>
-        <a href="webspam.html" class="text-blue-500">Send a Webhook to Discord</a>
-    </div>
-
+    <!-- Confetti Effect (Triggered by Name Submission) -->
     <script>
-        // Handle the form submission to set the name and store it in the DB
-        document.getElementById("nameForm").addEventListener("submit", async (e) => {
+        // Handle the form submission
+        document.getElementById("nameForm").addEventListener("submit", function (e) {
             e.preventDefault();
             const name = document.getElementById("nameInput").value;
+            document.getElementById("greetingMessage").textContent = `Welcome, ${name}! You're now part of the cave.`;
 
-            // Send the name to the backend (assumes backend API for storing the name)
-            const response = await fetch('/backend.js', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ name }),
-            });
-
-            const data = await response.json();
-            if (data.success) {
-                document.getElementById("greetingMessage").textContent = `Hello, ${name}! You’ve been added to the leaderboard.`;
-                loadLeaderboard(); // Reload leaderboard
-                startConfetti(); // Start confetti on new name submission
-            } else {
-                document.getElementById("greetingMessage").textContent = "Sorry, there was an error.";
-            }
+            // Trigger confetti effect
+            startConfetti();
         });
 
-        // Function to load the leaderboard from the database
-        async function loadLeaderboard() {
-            const response = await fetch('/backend.js?leaderboard=true');
-            const data = await response.json();
-            const leaderboard = document.getElementById("leaderboard");
-            leaderboard.innerHTML = ''; // Clear existing leaderboard list
-
-            // Add each leaderboard entry to the page
-            data.forEach((entry) => {
-                const li = document.createElement("li");
-                li.textContent = `${entry.rank}. ${entry.name} - Points: ${entry.points}`;
-                leaderboard.appendChild(li);
-            });
-        }
-
-        // Function to start confetti effect
+        // Confetti effect
         function startConfetti() {
-            const duration = 1000; // Duration of confetti
+            const duration = 1000;
             const end = Date.now() + duration;
 
             (function frame() {
@@ -125,9 +106,6 @@
                 }
             })();
         }
-
-        // Load the leaderboard when the page loads
-        window.onload = loadLeaderboard;
     </script>
 
 </body>
