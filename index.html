@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stickman's Idiot Cave</title>
+    <script src="https://cdn.jsdelivr.net/npm/tailwindcss@3.0.0/dist/tailwind.min.css"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.0.4"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+        }
+        .confetti { position: absolute; top: 0; left: 0; z-index: 9999; }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+
+    <!-- Form to input name -->
+    <div class="container mx-auto my-8 p-8 text-center">
+        <h1 class="text-3xl font-bold mb-4">Welcome to Stickman's Idiot Cave!</h1>
+        <h2 class="mb-8">Enter your name to get started:</h2>
+
+        <form id="nameForm" class="flex justify-center">
+            <input type="text" id="nameInput" class="border p-2 rounded-l-lg" placeholder="Your Name" required>
+            <button type="submit" class="bg-blue-500 text-white p-2 rounded-r-lg">Submit</button>
+        </form>
+
+        <p id="greetingMessage" class="mt-4"></p>
+    </div>
+
+    <!-- Leaderboard Section -->
+    <div class="container mx-auto my-8 p-8 text-center">
+        <h2 class="text-2xl font-bold mb-4">Leaderboard</h2>
+        <ul id="leaderboard" class="space-y-2">
+            <!-- Dynamic leaderboard list will be filled here -->
+        </ul>
+    </div>
+
+    <!-- Webordnilap Project Section -->
+    <div class="container mx-auto my-8 p-8 text-center">
+        <h2 class="text-2xl font-bold mb-4">Webordnilap Project</h2>
+        <a href="webordnilap.html" class="text-blue-500">Try Webordnilap</a>
+    </div>
+
+    <!-- Text Scrambler Project Section -->
+    <div class="container mx-auto my-8 p-8 text-center">
+        <h2 class="text-2xl font-bold mb-4">Text Scrambler</h2>
+        <a href="scramble.html" class="text-blue-500">Try the Text Scrambler</a>
+    </div>
+
+    <!-- FreeVRAM Joke Section -->
+    <div class="container mx-auto my-8 p-8 text-center">
+        <h2 class="text-2xl font-bold mb-4">FreeVRAM (Joke)</h2>
+        <a href="vram.html" class="text-blue-500">Claim Free VRAM!</a>
+    </div>
+
+    <!-- UnbI0ck3d Gmes Section -->
+    <div class="container mx-auto my-8 p-8 text-center">
+        <h2 class="text-2xl font-bold mb-4">UnbI0ck3d Gmes</h2>
+        <a href="asian/homepage.html" class="text-blue-500">Play UnbI0ck3d Gmes</a>
+    </div>
+
+    <script>
+        // Handle the form submission to set the name and store it in the DB
+        document.getElementById("nameForm").addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const name = document.getElementById("nameInput").value;
+
+            // Send the name to the backend (assumes backend API for storing the name)
+            const response = await fetch('/backend.js', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ name }),
+            });
+
+            const data = await response.json();
+            if (data.success) {
+                document.getElementById("greetingMessage").textContent = `Hello, ${name}! You’ve been added to the leaderboard.`;
+                loadLeaderboard(); // Reload leaderboard
+                startConfetti(); // Start confetti on new name submission
+            } else {
+                document.getElementById("greetingMessage").textContent = "Sorry, there was an error.";
+            }
+        });
+
+        // Function to load the leaderboard from the database
+        async function loadLeaderboard() {
+            const response = await fetch('/backend.js?leaderboard=true');
+            const data = await response.json();
+            const leaderboard = document.getElementById("leaderboard");
+            leaderboard.innerHTML = ''; // Clear existing leaderboard list
+
+            // Add each leaderboard entry to the page
+            data.forEach((entry) => {
+                const li = document.createElement("li");
+                li.textContent = `${entry.rank}. ${entry.name} - Points: ${entry.points}`;
+                leaderboard.appendChild(li);
+            });
+        }
+
+        // Function to start confetti effect
+        function startConfetti() {
+            const duration = 1000; // Duration of confetti
+            const end = Date.now() + duration;
+
+            (function frame() {
+                canvasConfetti({
+                    particleCount: 5,
+                    spread: 30,
+                    angle: Math.random() * 90 + 90,
+                    origin: { x: Math.random(), y: Math.random() - 0.2 }
+                });
+
+                if (Date.now() < end) {
+                    requestAnimationFrame(frame);
+                }
+            })();
+        }
+
+        // Load the leaderboard when the page loads
+        window.onload = loadLeaderboard;
+    </script>
+
+</body>
+</html>
