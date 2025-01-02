@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>bigelow</title>
+
+  <style>
+    body {
+      background-color: black;
+    }
+
+    h1 {
+      color: yellow;
+    }
+
+    h2 {
+      color: red;
+    }
+
+    h3 {
+      color: blue;
+    }
+
+    h4 {
+      color: green;
+    }
+
+    p1 {
+      color: cyan;
+    }
+
+    button {
+      color: white;
+      background-color: blue;
+      font-size: 18px;
+      padding: 10px;
+      margin: 10px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: darkblue;
+    }
+
+    iframe {
+      width: 800px;
+      height: 600px;
+      border: none;
+      margin-bottom: 20px;
+      display: none;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <h1>for school</h1>
+  <h2>bigelow</h2>
+  <h3>this will become a unblocked games</h3>
+  <h4>creator is someone</h4>
+
+  <h1><a href="https://docs.google.com/forms/d/1AryKFpXYIE6HT7FgrUOUb3hEB4GAI0JW0URWDjkxSIQ">googleform for ideas of games to add and code help</a></h1>
+
+  <h3><a href="https://www.youtube.com/watch?v=oHg5SJYRHA0">CLICK HERE!!!</a></h3>
+  <a href="dinosaur-gme.html">dinosaur-gme</a>
+
+  <p1>Chinese drama</p1>
+
+  <div id="game-container"></div>
+
+  <script>
+    const gameLinks = [
+      { name: "Slither.io", url: "https://slither.io/" },
+      { name: "Agar.io", url: "https://agar.io/" },
+      { name: "2048", url: "https://play2048.co/" },
+      { name: "Happy Wheels", url: "https://totaljerkface.com/happy_wheels.tjf" },
+      { name: "Run 3", url: "https://player03.com/run/3/beta/" },
+      { name: "Tetris", url: "https://tetris.com/play-tetris" },
+      { name: "Super Mario Bros Flash", url: "https://www.google.com/search?q=Super+Mario+Bros+Flash&sourceid=chrome&ie=UTF-8" },
+      { name: "Cookie Clicker", url: "https://orteil.dashnet.org/cookieclicker/" },
+      { name: "Tank Trouble", url: "https://www.tanktrouble.com/" },
+      { name: "Flappy Bird", url: "https://flappybird.io/" },
+      { name: "BlockBlast", url: "https://block-blast.io/" },
+      { name: "Little Alchemy 2", url: "https://littlealchemy2.com/" },
+      { name: "Super Smash Flash 2", url: "https://www.supersmashflash.com/play/ssf2/" }
+    ];
+
+    const gameContainer = document.getElementById('game-container');
+
+    gameLinks.forEach(game => {
+      const button = document.createElement('button');
+      button.innerText = `Play ${game.name}`;
+      gameContainer.appendChild(button);
+
+      const iframe = document.createElement('iframe');
+      iframe.src = game.url;
+      iframe.id = game.name;
+      gameContainer.appendChild(iframe);
+
+      button.onclick = () => {
+        const currentIframe = document.getElementById(game.name);
+        // Hide all iframes
+        document.querySelectorAll('iframe').forEach(iframe => iframe.style.display = 'none');
+        // Show the clicked iframe
+        currentIframe.style.display = 'block';
+      };
+    });
+  </script>
+
+</body>
+
+</html>
