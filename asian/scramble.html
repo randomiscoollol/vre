@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Scrambler</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+            text-align: center;
+        }
+        .container {
+            max-width: 500px;
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+            width: 80%;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .result {
+            font-size: 36px;
+            font-weight: bold;
+            margin-top: 20px;
+            letter-spacing: 2px;
+            transition: transform 0.5s ease, opacity 1s ease;
+        }
+        .scramble {
+            opacity: 0;
+            transform: rotate(360deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Text Scrambler</h1>
+        <input type="text" id="textInput" placeholder="Enter your text">
+        <button onclick="scrambleText()">Scramble Text</button>
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        function scrambleText() {
+            const inputText = document.getElementById("textInput").value;
+            const resultDiv = document.getElementById("result");
+
+            // Split the input into an array of characters, shuffle them, and join back
+            const scrambled = inputText.split('').sort(() => Math.random() - 0.5).join('');
+
+            // Add the scramble class to trigger animation
+            resultDiv.classList.add("scramble");
+
+            // Wait for the animation to finish, then update the text
+            setTimeout(() => {
+                resultDiv.textContent = scrambled;
+                resultDiv.classList.remove("scramble");
+            }, 500);  // Half the duration of the animation
+        }
+    </script>
+</body>
+</html>
