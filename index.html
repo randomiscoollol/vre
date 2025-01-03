@@ -8,7 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.0.4"></script>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Poppins', sans-serif;
             background-color: #121212;
             color: #fff;
             margin: 0;
@@ -25,7 +25,7 @@
             transform: scale(1.05);
         }
         .header-title {
-            font-size: 4rem;
+            font-size: 3.5rem;
             background: linear-gradient(90deg, #ff4f7e, #6a3b9d, #00bcd4);
             -webkit-background-clip: text;
             background-clip: text;
@@ -40,10 +40,10 @@
         }
         .section-header {
             font-size: 2.5rem;
-            font-weight: 700;
+            font-weight: 600;
             color: white;
             margin-bottom: 2rem;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
         }
         .input-field {
             background-color: #333;
@@ -54,16 +54,17 @@
             border-radius: 0.375rem;
             width: 300px;
             outline: none;
+            transition: border-color 0.3s ease, background-color 0.3s ease;
         }
         .input-field:focus {
             border-color: #ff4f7e;
             background-color: #1f1f1f;
         }
         .btn {
-            padding: 10px 20px;
+            padding: 12px 24px;
             background-color: #ff4f7e;
             color: white;
-            font-weight: 700;
+            font-weight: 600;
             border-radius: 10px;
             border: none;
             cursor: pointer;
@@ -77,7 +78,7 @@
             background: #1a1a1a;
             padding: 2rem;
             border-radius: 15px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
             margin-bottom: 2rem;
             transition: all 0.3s ease;
         }
@@ -86,16 +87,16 @@
             margin-bottom: 1.2rem;
         }
         .project-card p {
-            font-size: 1rem;
+            font-size: 1.1rem;
             margin-bottom: 1.5rem;
             color: #b3b3b3;
         }
         .gradient-button {
             display: inline-block;
-            padding: 10px 25px;
+            padding: 12px 30px;
             background: linear-gradient(90deg, #ff4f7e, #6a3b9d, #00bcd4);
             color: white;
-            font-weight: 700;
+            font-weight: 600;
             border-radius: 30px;
             text-decoration: none;
             transition: transform 0.3s ease, opacity 0.3s ease;
@@ -120,13 +121,13 @@
         <h1 class="header-title mb-6">
             Welcome to Stickman's site.
         </h1>
-        <p class="text-xl mb-6">Yeah just my projects.</p>
-        <p class="text-lg">What the sigma.</p>
+        <p class="text-xl mb-6">Here's a collection of my random projects.</p>
+        <p class="text-lg">They're not much, but hey, check 'em out!</p>
     </header>
 
     <!-- User Name Input -->
     <section class="container mx-auto text-center py-12">
-        <h2 class="section-header">Enter Your Name</h2>
+        <h2 class="section-header">What’s Your Name?</h2>
         <form id="nameForm" class="flex justify-center">
             <input type="text" id="nameInput" class="input-field" placeholder="Enter your name" required>
             <button type="submit" class="btn ml-4">Submit</button>
@@ -141,29 +142,36 @@
             <!-- Webordnilap Project -->
             <div class="project-card">
                 <h3>Webordnilap</h3>
-                <p>An online palindrome</p>
-                <a href="emordnilap.html" class="gradient-button">Try Webordnilap</a>
+                <p>A fun little online palindrome generator</p>
+                <a href="emordnilap.html" class="gradient-button">Give it a try</a>
             </div>
 
             <!-- Text Scrambler -->
             <div class="project-card">
                 <h3>Text Scrambler</h3>
-                <p>Mess up your text for fun!</p>
-                <a href="scramble.html" class="gradient-button">try the text scrambler</a>
+                <p>Make your text all jumbled up!</p>
+                <a href="scramble.html" class="gradient-button">Scramble some text</a>
             </div>
 
             <!-- FreeVRAM Joke -->
             <div class="project-card">
                 <h3>FreeVRAM</h3>
-                <p>wow free vram</p>
+                <p>Get some "free" VRAM (because why not?)</p>
                 <a href="vram.html" class="gradient-button">Claim Free VRAM</a>
             </div>
 
             <!-- UnbI0ck3d Gmes -->
             <div class="project-card">
-                <h3>unblocked gmes</h3>
-                <p>unblocked gmes!</p>
-                <a href="asian/homepage.html" class="gradient-button">play unblocked gmes</a>
+                <h3>Unblocked Gmes</h3>
+                <p>Play unblocked gmes during school!</p>
+                <a href="asian/homepage.html" class="gradient-button">Play Unblocked Gmes</a>
+            </div>
+
+            <!-- DVD Screensaver but it's ur text xd -->
+            <div class="project-card">
+                <h3>DVD Screensaver but it's ur text xd</h3>
+                <p>Ever wanted that classic DVD screensaver, but with your own text? Now you can!</p>
+                <a href="dvd.html" class="gradient-button">Try it out</a>
             </div>
         </div>
     </section>
@@ -171,8 +179,8 @@
     <!-- WebSpam Section -->
     <section class="container mx-auto py-12">
         <div class="project-card">
-            <h3 class="text-2xl font-semibold mb-4">WebSpam - wow troll people's webhooks</h3>
-            <p class="text-gray-300 mb-4">enter a webhook url the message and wow</p>
+            <h3 class="text-2xl font-semibold mb-4">WebSpam</h3>
+            <p class="text-gray-300 mb-4">Ever wanted to mess with a webhook? Now you can!</p>
             <a href="webspam.html" class="gradient-button">Send a Webhook</a>
         </div>
     </section>
@@ -182,7 +190,7 @@
         document.getElementById("nameForm").addEventListener("submit", function (e) {
             e.preventDefault();
             const name = document.getElementById("nameInput").value;
-            document.getElementById("greetingMessage").textContent = `Welcome, ${name}! You're now part of the cave.`;
+            document.getElementById("greetingMessage").textContent = `Welcome, ${name}! Hope you enjoy your stay.`;
 
             startConfetti();
         });
