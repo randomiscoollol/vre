@@ -14,6 +14,11 @@
             margin: 0;
             padding: 0;
             overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
         }
         .confetti { position: absolute; top: 0; left: 0; z-index: 9999; }
         .btn:hover {
@@ -32,6 +37,7 @@
             color: transparent;
             animation: gradientAnimation 5s ease infinite;
             font-weight: 900;
+            text-align: center;
         }
         @keyframes gradientAnimation {
             0% { background-position: 0% 50%; }
@@ -44,6 +50,7 @@
             color: white;
             margin-bottom: 2rem;
             letter-spacing: 1px;
+            text-align: center;
         }
         .input-field {
             background-color: #333;
@@ -55,6 +62,7 @@
             width: 300px;
             outline: none;
             transition: border-color 0.3s ease, background-color 0.3s ease;
+            margin-bottom: 1rem;
         }
         .input-field:focus {
             border-color: #ff4f7e;
@@ -81,6 +89,8 @@
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
             margin-bottom: 2rem;
             transition: all 0.3s ease;
+            max-width: 350px;
+            text-align: center;
         }
         .project-card h3 {
             font-size: 1.8rem;
@@ -112,6 +122,21 @@
             gap: 3rem;
             margin-top: 2rem;
         }
+        /* For responsive design */
+        @media (max-width: 768px) {
+            .header-title {
+                font-size: 2.5rem;
+            }
+            .section-header {
+                font-size: 2rem;
+            }
+            .input-field {
+                width: 250px;
+            }
+            .project-card {
+                max-width: 300px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -121,16 +146,16 @@
         <h1 class="header-title mb-6">
             Welcome to Stickman's site.
         </h1>
-        <p class="text-xl mb-6">Here's a collection of my random projects.</p>
-        <p class="text-lg">They're not much, but hey, check 'em out!</p>
+        <p class="text-xl mb-6">Here’s a collection of my random projects.</p>
+        <p class="text-lg">Take a look, have some fun!</p>
     </header>
 
     <!-- User Name Input -->
     <section class="container mx-auto text-center py-12">
-        <h2 class="section-header">What’s Your Name?</h2>
-        <form id="nameForm" class="flex justify-center">
+        <h2 class="section-header">What's your name?</h2>
+        <form id="nameForm" class="flex flex-col items-center">
             <input type="text" id="nameInput" class="input-field" placeholder="Enter your name" required>
-            <button type="submit" class="btn ml-4">Submit</button>
+            <button type="submit" class="btn mt-4">Submit</button>
         </form>
         <p id="greetingMessage" class="mt-4 text-lg text-gray-400"></p>
     </section>
